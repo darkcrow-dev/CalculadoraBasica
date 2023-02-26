@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         botonRestar.setOnClickListener {
-            palabras = operacionesPantalla.text.toString() + "—"
+            palabras = operacionesPantalla.text.toString() + "-"
             operacionesPantalla.setText(palabras)
         }
 
@@ -139,7 +139,6 @@ class MainActivity : AppCompatActivity() {
             palabras = operacionesPantalla.text.toString()
             palabras = palabras.replace("÷", "/")
             palabras = palabras.replace("x", "*")
-            palabras = palabras.replace("—", "-")
 
             var expression = ExpressionBuilder(palabras).build()
 
