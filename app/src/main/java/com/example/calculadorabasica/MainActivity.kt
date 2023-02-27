@@ -206,6 +206,7 @@ class MainActivity : AppCompatActivity() {
         botonBorrar.setOnLongClickListener {
             operacionesPantalla.setText("")
             resultadosPantalla.text = ""
+            operacionesPantalla.setSelection(0)
             true
         }
     }
