@@ -202,9 +202,10 @@ class MainActivity : AppCompatActivity() {
                 operacionesPantalla.setText(palabras)
                 operacionesPantalla.setSelection(posicion - 1)
             }
-
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion)
+            else{
+                operacionesPantalla.setText(palabras)
+                operacionesPantalla.setSelection(posicion)
+            }
         }
 
         botonBorrar.setOnLongClickListener {
