@@ -194,13 +194,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         botonBorrar.setOnClickListener {
+            posicion = operacionesPantalla.selectionStart
             palabras = operacionesPantalla.text.toString()
 
             if(palabras.isNotEmpty()){
                 palabras = palabras.substring(0, palabras.length - 1)
+                operacionesPantalla.setText(palabras)
+                operacionesPantalla.setSelection(posicion - 1)
             }
 
             operacionesPantalla.setText(palabras)
+            operacionesPantalla.setSelection(posicion)
         }
 
         botonBorrar.setOnLongClickListener {
