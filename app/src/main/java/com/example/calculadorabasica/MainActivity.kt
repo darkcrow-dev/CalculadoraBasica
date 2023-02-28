@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
         var resultado: Double
 
         operacionesPantalla.showSoftInputOnFocus = false
+        operacionesPantalla.requestFocus()
 
         botonUno.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
