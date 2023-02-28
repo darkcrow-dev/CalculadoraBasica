@@ -198,9 +198,16 @@ class MainActivity : AppCompatActivity() {
             palabras = operacionesPantalla.text.toString()
 
             if(palabras.isNotEmpty()){
-                palabras = palabras.substring(0, palabras.length - 1)
-                operacionesPantalla.setText(palabras)
-                operacionesPantalla.setSelection(posicion - 1)
+                if(posicion > 0 && posicion < palabras.length){
+                    palabras = palabras.substring(0, posicion -1) + palabras.substring(posicion, palabras.length)
+                    operacionesPantalla.setText(palabras)
+                    operacionesPantalla.setSelection(posicion - 1)
+                }
+                else if(posicion == palabras.length){
+                    palabras = palabras.substring(0, palabras.length - 1)
+                    operacionesPantalla.setText(palabras)
+                    operacionesPantalla.setSelection(posicion - 1)
+                }
             }
             else{
                 operacionesPantalla.setText(palabras)
