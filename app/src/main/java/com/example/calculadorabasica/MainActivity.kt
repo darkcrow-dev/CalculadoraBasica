@@ -49,128 +49,146 @@ class MainActivity : AppCompatActivity() {
 
         botonUno.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString() + "1"
+            palabras = operacionesPantalla.text.toString()
+            palabras = palabras.substring(0, posicion) + "1" + palabras.substring(posicion, palabras.length)
             operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion)
+            operacionesPantalla.setSelection(posicion + 1)
         }
 
         botonDos.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString() + "2"
+            palabras = operacionesPantalla.text.toString()
+            palabras = palabras.substring(0, posicion) + "2" + palabras.substring(posicion, palabras.length)
             operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion)
+            operacionesPantalla.setSelection(posicion + 1)
         }
 
         botonTres.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString() + "3"
+            palabras = operacionesPantalla.text.toString()
+            palabras = palabras.substring(0, posicion) + "3" + palabras.substring(posicion, palabras.length)
             operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion)
+            operacionesPantalla.setSelection(posicion + 1)
         }
 
         botonCuatro.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString() + "4"
+            palabras = operacionesPantalla.text.toString()
+            palabras = palabras.substring(0, posicion) + "4" + palabras.substring(posicion, palabras.length)
             operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion)
+            operacionesPantalla.setSelection(posicion + 1)
         }
 
         botonCinco.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString() + "5"
+            palabras = operacionesPantalla.text.toString()
+            palabras = palabras.substring(0, posicion) + "5" + palabras.substring(posicion, palabras.length)
             operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion)
+            operacionesPantalla.setSelection(posicion + 1)
         }
 
         botonSeis.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString() + "6"
+            palabras = operacionesPantalla.text.toString()
+            palabras = palabras.substring(0, posicion) + "6" + palabras.substring(posicion, palabras.length)
             operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion)
+            operacionesPantalla.setSelection(posicion + 1)
         }
 
         botonSiete.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString() + "7"
+            palabras = operacionesPantalla.text.toString()
+            palabras = palabras.substring(0, posicion) + "7" + palabras.substring(posicion, palabras.length)
             operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion)
+            operacionesPantalla.setSelection(posicion + 1)
         }
 
         botonOcho.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString() + "8"
+            palabras = operacionesPantalla.text.toString()
+            palabras = palabras.substring(0, posicion) + "8" + palabras.substring(posicion, palabras.length)
             operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion)
+            operacionesPantalla.setSelection(posicion + 1)
         }
 
         botonNueve.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString() + "9"
+            palabras = operacionesPantalla.text.toString()
+            palabras = palabras.substring(0, posicion) + "9" + palabras.substring(posicion, palabras.length)
             operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion)
+            operacionesPantalla.setSelection(posicion + 1)
         }
 
         botonCero.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString() + "0"
+            palabras = operacionesPantalla.text.toString()
+            palabras = palabras.substring(0, posicion) + "0" + palabras.substring(posicion, palabras.length)
             operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion)
+            operacionesPantalla.setSelection(posicion + 1)
         }
 
         botonPunto.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString() + "."
+            palabras = operacionesPantalla.text.toString()
+            palabras = palabras.substring(0, posicion) + "." + palabras.substring(posicion, palabras.length)
             operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion)
+            operacionesPantalla.setSelection(posicion + 1)
         }
 
         botonSumar.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString() + "+"
+            palabras = operacionesPantalla.text.toString()
+            palabras = palabras.substring(0, posicion) + "+" + palabras.substring(posicion, palabras.length)
             operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion)
+            operacionesPantalla.setSelection(posicion + 1)
         }
 
         botonRestar.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString() + "-"
+            palabras = operacionesPantalla.text.toString()
+            palabras = palabras.substring(0, posicion) + "-" + palabras.substring(posicion, palabras.length)
             operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion)
+            operacionesPantalla.setSelection(posicion + 1)
         }
 
         botonMultiplicar.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString() + "x"
+            palabras = operacionesPantalla.text.toString()
+            palabras = palabras.substring(0, posicion) + "x" + palabras.substring(posicion, palabras.length)
             operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion)
+            operacionesPantalla.setSelection(posicion + 1)
         }
 
         botonDividir.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString() + "÷"
+            palabras = operacionesPantalla.text.toString()
+            palabras = palabras.substring(0, posicion) + "÷" + palabras.substring(posicion, palabras.length)
             operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion)
+            operacionesPantalla.setSelection(posicion + 1)
         }
 
         botonParentesis1.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString() + "("
+            palabras = operacionesPantalla.text.toString()
+            palabras = palabras.substring(0, posicion) + "(" + palabras.substring(posicion, palabras.length)
             operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion)
+            operacionesPantalla.setSelection(posicion + 1)
         }
 
         botonParentesis2.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString() + ")"
+            palabras = operacionesPantalla.text.toString()
+            palabras = palabras.substring(0, posicion) + ")" + palabras.substring(posicion, palabras.length)
             operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion)
+            operacionesPantalla.setSelection(posicion + 1)
         }
 
         botonPorcentaje.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString() + "%"
+            palabras = operacionesPantalla.text.toString()
+            palabras = palabras.substring(0, posicion) + "%" + palabras.substring(posicion, palabras.length)
             operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion)
+            operacionesPantalla.setSelection(posicion + 1)
         }
 
         botonIgual.setOnClickListener {
@@ -199,13 +217,8 @@ class MainActivity : AppCompatActivity() {
             palabras = operacionesPantalla.text.toString()
 
             if(palabras.isNotEmpty()){
-                if(posicion > 0 && posicion < palabras.length){
+                if(posicion > 0){
                     palabras = palabras.substring(0, posicion -1) + palabras.substring(posicion, palabras.length)
-                    operacionesPantalla.setText(palabras)
-                    operacionesPantalla.setSelection(posicion - 1)
-                }
-                else if(posicion == palabras.length){
-                    palabras = palabras.substring(0, palabras.length - 1)
                     operacionesPantalla.setText(palabras)
                     operacionesPantalla.setSelection(posicion - 1)
                 }
