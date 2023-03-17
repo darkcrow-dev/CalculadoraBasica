@@ -1,292 +1,361 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="1"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <!-- Operaciones -->
+    <EditText
+        android:id="@+id/operaciones_pantalla"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        android:textSize="44sp"
+        android:gravity="center|right"
+        android:singleLine="true"
+        android:scrollHorizontally="true"
+        android:background="@color/transparent"
+        app:layout_constraintBottom_toTopOf="@+id/division_operaciones"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+    </EditText>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.25"
-            android:orientation="vertical">
+    <!-- Resultados -->
+    <TextView
+        android:id="@+id/resultados_pantalla"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=""
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="right|center"
+        app:layout_constraintBottom_toTopOf="@+id/division_resultados"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/division_operaciones">
+    </TextView>
 
-            <EditText
-                android:id="@+id/operaciones_pantalla"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text=""
-                android:textSize="44sp"
-                android:gravity="center|right"
-                android:singleLine="true"
-                android:scrollHorizontally="true"
-                android:background="@color/transparent">
-            </EditText>
-        </LinearLayout>
+    <!-- fila 1 botones -->
+    <Button
+        android:id="@+id/borrar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="⌫"
+        android:textSize="40sp"
+        android:paddingLeft="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/division_botones1"
+        app:layout_constraintEnd_toStartOf="@+id/division_columna1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/division_resultados">
+    </Button>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.1"
-            android:orientation="vertical"
-            android:weightSum="1">
+    <Button
+        android:id="@+id/parentesis1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="("
+        android:textSize="32sp"
+        android:paddingBottom="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/division_botones1"
+        app:layout_constraintEnd_toStartOf="@+id/division_columna2"
+        app:layout_constraintStart_toStartOf="@+id/division_columna1"
+        app:layout_constraintTop_toTopOf="@+id/division_resultados">
+    </Button>
 
-            <TextView
-                android:id="@+id/resultados_pantalla"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text=""
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:gravity="right|center">
-            </TextView>
-        </LinearLayout>
+    <Button
+        android:id="@+id/parentesis2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=")"
+        android:textSize="32sp"
+        android:paddingBottom="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/division_botones1"
+        app:layout_constraintEnd_toStartOf="@+id/division_columna3"
+        app:layout_constraintStart_toStartOf="@+id/division_columna2"
+        app:layout_constraintTop_toTopOf="@+id/division_resultados">
+    </Button>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.13"
-            android:weightSum="1"
-            android:orientation="horizontal">
+    <Button
+        android:id="@+id/dividir"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="÷"
+        android:textSize="40sp"
+        android:paddingRight="14sp"
+        android:paddingBottom="6sp"
+        app:layout_constraintBottom_toTopOf="@+id/division_botones1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/division_columna3"
+        app:layout_constraintTop_toTopOf="@+id/division_resultados">
+    </Button>
 
-            <Button
-                android:id="@+id/borrar"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:text="⌫"
-                android:textSize="40sp"
-                android:paddingLeft="12dp">
-            </Button>
+    <!-- fila 2 botones -->
+    <Button
+        android:id="@+id/siete"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="7"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/division_botones2"
+        app:layout_constraintEnd_toStartOf="@+id/division_columna1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/division_botones1">
+    </Button>
 
-            <Button
-                android:id="@+id/parentesis1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:text="("
-                android:textSize="32sp"
-                android:paddingBottom="10sp">
-            </Button>
+    <Button
+        android:id="@+id/ocho"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="8"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/division_botones2"
+        app:layout_constraintEnd_toStartOf="@+id/division_columna2"
+        app:layout_constraintStart_toStartOf="@+id/division_columna1"
+        app:layout_constraintTop_toTopOf="@+id/division_botones1">
+    </Button>
 
-            <Button
-                android:id="@+id/parentesis2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:text=")"
-                android:textSize="32sp"
-                android:paddingBottom="10sp">
-            </Button>
+    <Button
+        android:id="@+id/nueve"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="9"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/division_botones2"
+        app:layout_constraintEnd_toStartOf="@+id/division_columna3"
+        app:layout_constraintStart_toStartOf="@+id/division_columna2"
+        app:layout_constraintTop_toTopOf="@+id/division_botones1">
+    </Button>
 
-            <Button
-                android:id="@+id/dividir"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:text="÷"
-                android:textSize="40sp"
-                android:paddingRight="14sp"
-                android:paddingBottom="6sp">
-            </Button>
-        </LinearLayout>
+    <Button
+        android:id="@+id/multiplicar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="x"
+        android:textSize="28sp"
+        android:paddingRight="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/division_botones2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/division_columna3"
+        app:layout_constraintTop_toTopOf="@+id/division_botones1">
+    </Button>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.13"
-            android:weightSum="1"
-            android:orientation="horizontal">
+    <!-- fila 3 botones -->
+    <Button
+        android:id="@+id/cuatro"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="4"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/division_botones3"
+        app:layout_constraintEnd_toStartOf="@+id/division_columna1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/division_botones2">
+    </Button>
 
-            <Button
-                android:id="@+id/siete"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:text="7"
-                android:textSize="34sp">
-            </Button>
+    <Button
+        android:id="@+id/cinco"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="5"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/division_botones3"
+        app:layout_constraintEnd_toStartOf="@+id/division_columna2"
+        app:layout_constraintStart_toStartOf="@+id/division_columna1"
+        app:layout_constraintTop_toTopOf="@+id/division_botones2">
+    </Button>
 
-            <Button
-                android:id="@+id/ocho"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:text="8"
-                android:textSize="34sp">
-            </Button>
+    <Button
+        android:id="@+id/seis"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="6"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/division_botones3"
+        app:layout_constraintEnd_toStartOf="@+id/division_columna3"
+        app:layout_constraintStart_toStartOf="@+id/division_columna2"
+        app:layout_constraintTop_toTopOf="@+id/division_botones2">
+    </Button>
 
-            <Button
-                android:id="@+id/nueve"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:text="9"
-                android:textSize="34sp">
-            </Button>
+    <Button
+        android:id="@+id/restar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="—"
+        android:textSize="40sp"
+        android:paddingRight="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/division_botones3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/division_columna3"
+        app:layout_constraintTop_toTopOf="@+id/division_botones2">
+    </Button>
 
-            <Button
-                android:id="@+id/multiplicar"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:text="x"
-                android:textSize="28sp"
-                android:paddingRight="10sp">
-            </Button>
-        </LinearLayout>
+    <!-- fila 4 botones -->
+    <Button
+        android:id="@+id/uno"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="1"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/division_botones4"
+        app:layout_constraintEnd_toStartOf="@+id/division_columna1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/division_botones3">
+    </Button>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.13"
-            android:weightSum="1"
-            android:orientation="horizontal">
+    <Button
+        android:id="@+id/dos"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="2"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/division_botones4"
+        app:layout_constraintEnd_toStartOf="@+id/division_columna2"
+        app:layout_constraintStart_toStartOf="@+id/division_columna1"
+        app:layout_constraintTop_toTopOf="@+id/division_botones3">
+    </Button>
 
-            <Button
-                android:id="@+id/cuatro"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:text="4"
-                android:textSize="34sp">
-            </Button>
+    <Button
+        android:id="@+id/tres"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="3"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/division_botones4"
+        app:layout_constraintEnd_toStartOf="@+id/division_columna3"
+        app:layout_constraintStart_toStartOf="@+id/division_columna2"
+        app:layout_constraintTop_toTopOf="@+id/division_botones3">
+    </Button>
 
-            <Button
-                android:id="@+id/cinco"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:text="5"
-                android:textSize="34sp">
-            </Button>
+    <Button
+        android:id="@+id/sumar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="+"
+        android:textSize="36sp"
+        android:paddingRight="8sp"
+        android:paddingBottom="8sp"
+        app:layout_constraintBottom_toTopOf="@+id/division_botones4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/division_columna3"
+        app:layout_constraintTop_toTopOf="@+id/division_botones3">
+    </Button>
 
-            <Button
-                android:id="@+id/seis"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:text="6"
-                android:textSize="34sp">
-            </Button>
+    <!-- fila 5 botones -->
+    <Button
+        android:id="@+id/cero"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="0"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/division_columna1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/division_botones4">
+    </Button>
 
-            <Button
-                android:id="@+id/restar"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:text="—"
-                android:textSize="40sp"
-                android:paddingRight="10sp">
-            </Button>
-        </LinearLayout>
+    <Button
+        android:id="@+id/punto"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="."
+        android:textSize="40sp"
+        android:paddingBottom="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/division_columna2"
+        app:layout_constraintStart_toStartOf="@+id/division_columna1"
+        app:layout_constraintTop_toTopOf="@+id/division_botones4">
+    </Button>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.13"
-            android:weightSum="1"
-            android:orientation="horizontal">
+    <Button
+        android:id="@+id/porcentaje"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="%"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/division_columna3"
+        app:layout_constraintStart_toStartOf="@+id/division_columna2"
+        app:layout_constraintTop_toTopOf="@+id/division_botones4">
+    </Button>
 
-            <Button
-                android:id="@+id/uno"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:text="1"
-                android:textSize="34sp">
-            </Button>
-
-            <Button
-                android:id="@+id/dos"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:text="2"
-                android:textSize="34sp"
-                app:layout_constraintBottom_toTopOf="@+id/division_botones4">
-            </Button>
-
-            <Button
-                android:id="@+id/tres"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:text="3"
-                android:textSize="34sp">
-            </Button>
-
-            <Button
-                android:id="@+id/sumar"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:text="+"
-                android:textSize="36sp"
-                android:paddingRight="8sp"
-                android:paddingBottom="8sp">
-            </Button>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.13"
-            android:weightSum="1"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/cero"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:text="0"
-                android:textSize="34sp">
-            </Button>
-
-            <Button
-                android:id="@+id/punto"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:text="."
-                android:textSize="40sp"
-                android:paddingBottom="25sp">
-            </Button>
-
-            <Button
-                android:id="@+id/porcentaje"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:text="%"
-                android:textSize="30sp">
-            </Button>
-
-            <Button
-                android:id="@+id/igual"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:text="="
-                android:textSize="40sp"
-                android:paddingRight="10sp"
-                android:paddingBottom="10sp">
-            </Button>
-        </LinearLayout>
+    <Button
+        android:id="@+id/igual"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="="
+        android:textSize="40sp"
+        android:paddingRight="10sp"
+        android:paddingBottom="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/division_columna3"
+        app:layout_constraintTop_toTopOf="@+id/division_botones4">
+    </Button>
 
 
-    </LinearLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/division_columna1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/division_columna2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/division_columna3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/division_operaciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/division_resultados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/division_botones1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.48" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/division_botones2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.61" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/division_botones3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.74" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/division_botones4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.87" />
 </androidx.constraintlayout.widget.ConstraintLayout>
