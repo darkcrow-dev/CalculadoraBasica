@@ -199,14 +199,13 @@ class MainActivity : AppCompatActivity() {
 
             val expression = ExpressionBuilder(palabras).build()
 
-            resultado = expression.evaluate()
-
-            val longResultado = resultado.toLong()
-
-            if (resultado == longResultado.toDouble()) {
-                resultadosPantalla.text = longResultado.toString()
-            } else {
+            try{
+                resultado = expression.evaluate()
                 resultadosPantalla.text = resultado.toString()
+            } catch (e: ArithmeticException) {
+                resultadosPantalla.text = "No se puede dividir entre 0"
+            } catch (e: java.lang.IllegalArgumentException) {
+                resultadosPantalla.text = "Parentesis vacio"
             }
 
             operacionesPantalla.setSelection(posicion)
