@@ -198,14 +198,17 @@ class MainActivity : AppCompatActivity() {
             palabras = palabras.replace("x", "*")
 
             val expression = ExpressionBuilder(palabras).build()
+            val textoErrores: String
 
             try{
                 resultado = expression.evaluate()
                 resultadosPantalla.text = resultado.toString()
             } catch (e: ArithmeticException) {
-                resultadosPantalla.text = "No se puede dividir entre 0"
+                textoErrores = "No se puede dividir entre 0"
+                resultadosPantalla.text = textoErrores
             } catch (e: java.lang.IllegalArgumentException) {
-                resultadosPantalla.text = "Parentesis vacio"
+                textoErrores = "Parentesis vacio"
+                resultadosPantalla.text = textoErrores
             }
 
             operacionesPantalla.setSelection(posicion)
