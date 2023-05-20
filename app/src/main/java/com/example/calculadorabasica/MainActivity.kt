@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //Elementos de la vista
         val operacionesPantalla = findViewById<EditText>(R.id.operaciones_pantalla)
         val resultadosPantalla = findViewById<TextView>(R.id.resultados_pantalla)
 
