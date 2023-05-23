@@ -201,9 +201,6 @@ class MainActivity : AppCompatActivity() {
             val expression = ExpressionBuilder(palabras).build()
             val textoErrores: String
 
-            resultado = expression.evaluate()
-            resultadosPantalla.text = resultado.toString()
-
             try{
                 resultado = expression.evaluate()
                 resultadosPantalla.text = resultado.toString()
@@ -211,7 +208,7 @@ class MainActivity : AppCompatActivity() {
                 textoErrores = "No se puede dividir entre 0"
                 resultadosPantalla.text = textoErrores
             } catch (e: java.lang.IllegalArgumentException) {
-                textoErrores = "Parentesis vacio"
+                textoErrores = ""
                 resultadosPantalla.text = textoErrores
             }
 
