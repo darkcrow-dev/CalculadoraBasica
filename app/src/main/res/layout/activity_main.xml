@@ -273,11 +273,12 @@
     </Button>
 
     <Button
-        android:id="@+id/porcentaje"
+        android:id="@+id/potencia"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="%"
+        android:text="^"
         android:textSize="30sp"
+        android:paddingTop="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/division_columna3"
         app:layout_constraintStart_toStartOf="@+id/division_columna2"

@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         val botonCero = findViewById<Button>(R.id.cero)
         val botonPunto = findViewById<Button>(R.id.punto)
-        val botonPorcentaje = findViewById<Button>(R.id.porcentaje)
+        val botonPotencia = findViewById<Button>(R.id.potencia)
         val botonIgual = findViewById<Button>(R.id.igual)
 
         var palabras: String
@@ -184,10 +184,10 @@ class MainActivity : AppCompatActivity() {
             operacionesPantalla.setSelection(posicion + 1)
         }
 
-        botonPorcentaje.setOnClickListener {
+        botonPotencia.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
             palabras = operacionesPantalla.text.toString()
-            palabras = palabras.substring(0, posicion) + "%" + palabras.substring(posicion, palabras.length)
+            palabras = palabras.substring(0, posicion) + "^" + palabras.substring(posicion, palabras.length)
             operacionesPantalla.setText(palabras)
             operacionesPantalla.setSelection(posicion + 1)
         }
@@ -200,6 +200,9 @@ class MainActivity : AppCompatActivity() {
 
             val expression = ExpressionBuilder(palabras).build()
             val textoErrores: String
+
+            resultado = expression.evaluate()
+            resultadosPantalla.text = resultado.toString()
 
             try{
                 resultado = expression.evaluate()
