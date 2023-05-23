@@ -4,4 +4,4 @@ Calculadora básica creada en android y con lenguaje kotlin.
 
 El usuario realiza las operaciones básicas en la calculadora y en un apartado se obtendrán los resultados.
 
-![Calculadora](https://user-images.githubusercontent.com/108247794/221397235-194b7f68-deb1-4d2f-990a-53dc36bf3c62.png)
+![app1](https://github.com/darkcrow-dev/CalculadoraBasica/assets/108247794/40e8843b-99dd-4577-91b1-ddc22530f55d)
