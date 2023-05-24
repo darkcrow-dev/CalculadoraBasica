@@ -147,8 +147,8 @@ class MainActivity : AppCompatActivity() {
         if(string == "+"){
             if(palabras.isNotEmpty()){
                 if(posicion > 0){
-                    if(palabras[posicion-1].toString() != "+"){
-                        palabras = palabras.substring(0, posicion) + "+" + palabras.substring(posicion, palabras.length)
+                    if(palabras[posicion-1].toString() != string){
+                        palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
                         operacionesPantalla.setText(palabras)
                         operacionesPantalla.setSelection(posicion + 1)
                     }
@@ -160,7 +160,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
         else if(string == "-"){
-            if(palabras[posicion-1].toString() != string){
+            if(posicion > 0){
+                if(palabras[posicion-1].toString() != string){
+                    palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
+                    operacionesPantalla.setText(palabras)
+                    operacionesPantalla.setSelection(posicion + 1)
+                }
+            }
+            else{
                 palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
                 operacionesPantalla.setText(palabras)
                 operacionesPantalla.setSelection(posicion + 1)
@@ -169,8 +176,8 @@ class MainActivity : AppCompatActivity() {
         else if(string == "x"){
             if(palabras.isNotEmpty()){
                 if(posicion > 0){
-                    if(palabras[posicion-1].toString() != "x"){
-                        palabras = palabras.substring(0, posicion) + "x" + palabras.substring(posicion, palabras.length)
+                    if(palabras[posicion-1].toString() != string){
+                        palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
                         operacionesPantalla.setText(palabras)
                         operacionesPantalla.setSelection(posicion + 1)
                     }
@@ -184,8 +191,8 @@ class MainActivity : AppCompatActivity() {
         else if(string == "÷"){
             if(palabras.isNotEmpty()){
                 if(posicion > 0){
-                    if(palabras[posicion-1].toString() != "÷"){
-                        palabras = palabras.substring(0, posicion) + "÷" + palabras.substring(posicion, palabras.length)
+                    if(palabras[posicion-1].toString() != string){
+                        palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
                         operacionesPantalla.setText(palabras)
                         operacionesPantalla.setSelection(posicion + 1)
                     }
@@ -199,8 +206,8 @@ class MainActivity : AppCompatActivity() {
         else if(string == "^"){
             if(palabras.isNotEmpty()){
                 if(posicion > 0){
-                    if(palabras[posicion-1].toString() != "^"){
-                        palabras = palabras.substring(0, posicion) + "^" + palabras.substring(posicion, palabras.length)
+                    if(palabras[posicion-1].toString() != string){
+                        palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
                         operacionesPantalla.setText(palabras)
                         operacionesPantalla.setSelection(posicion + 1)
                     }
