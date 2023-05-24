@@ -129,7 +129,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         botonBorrar.setOnClickListener {
-            boton("⌫")
+            boton("borrar")
         }
 
         botonBorrar.setOnLongClickListener {
@@ -199,7 +199,7 @@ class MainActivity : AppCompatActivity() {
 
             operacionesPantalla.setSelection(posicion)
         }
-        else if(string == "⌫"){
+        else if(string == "borrar"){
             if(palabras.isNotEmpty()){
                 if(posicion > 0){
                     palabras = palabras.substring(0, posicion -1) + palabras.substring(posicion, palabras.length)
