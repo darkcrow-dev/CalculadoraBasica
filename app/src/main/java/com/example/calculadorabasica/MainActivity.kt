@@ -133,10 +133,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         botonBorrar.setOnLongClickListener {
-            operacionesPantalla.setText("")
-            resultadosPantalla.text = ""
-            operacionesPantalla.setSelection(0)
-            true
+            borrarTodo()
         }
     }
 
@@ -148,9 +145,7 @@ class MainActivity : AppCompatActivity() {
             if(palabras.isNotEmpty()){
                 if(posicion > 0){
                     if(palabras[posicion-1].toString() != string){
-                        palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
-                        operacionesPantalla.setText(palabras)
-                        operacionesPantalla.setSelection(posicion + 1)
+                        texto(string, posicion, palabras, true)
                     }
                 }
             }
@@ -162,24 +157,18 @@ class MainActivity : AppCompatActivity() {
         else if(string == "-"){
             if(posicion > 0){
                 if(palabras[posicion-1].toString() != string){
-                    palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
-                    operacionesPantalla.setText(palabras)
-                    operacionesPantalla.setSelection(posicion + 1)
+                    texto(string, posicion, palabras, true)
                 }
             }
             else{
-                palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
-                operacionesPantalla.setText(palabras)
-                operacionesPantalla.setSelection(posicion + 1)
+                texto(string, posicion, palabras, true)
             }
         }
         else if(string == "x"){
             if(palabras.isNotEmpty()){
                 if(posicion > 0){
                     if(palabras[posicion-1].toString() != string){
-                        palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
-                        operacionesPantalla.setText(palabras)
-                        operacionesPantalla.setSelection(posicion + 1)
+                        texto(string, posicion, palabras, true)
                     }
                 }
             }
@@ -192,9 +181,7 @@ class MainActivity : AppCompatActivity() {
             if(palabras.isNotEmpty()){
                 if(posicion > 0){
                     if(palabras[posicion-1].toString() != string){
-                        palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
-                        operacionesPantalla.setText(palabras)
-                        operacionesPantalla.setSelection(posicion + 1)
+                        texto(string, posicion, palabras, true)
                     }
                 }
             }
@@ -207,9 +194,7 @@ class MainActivity : AppCompatActivity() {
             if(palabras.isNotEmpty()){
                 if(posicion > 0){
                     if(palabras[posicion-1].toString() != string){
-                        palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
-                        operacionesPantalla.setText(palabras)
-                        operacionesPantalla.setSelection(posicion + 1)
+                        texto(string, posicion, palabras, true)
                     }
                 }
             }
@@ -241,9 +226,7 @@ class MainActivity : AppCompatActivity() {
         else if(string == "borrar"){
             if(palabras.isNotEmpty()){
                 if(posicion > 0){
-                    palabras = palabras.substring(0, posicion - 1) + palabras.substring(posicion, palabras.length)
-                    operacionesPantalla.setText(palabras)
-                    operacionesPantalla.setSelection(posicion - 1)
+                    texto(string, posicion, palabras, false)
                 }
             }
             else{
@@ -252,9 +235,27 @@ class MainActivity : AppCompatActivity() {
             }
         }
         else{
-            palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion + 1)
+            texto(string, posicion, palabras, true)
         }
+    }
+
+    private fun texto(simbolo: String, posicionPantalla: Int, palabrasPantalla: String, caso: Boolean){
+        if(caso){
+            palabras = palabrasPantalla.substring(0, posicionPantalla) + simbolo + palabrasPantalla.substring(posicionPantalla, palabrasPantalla.length)
+            operacionesPantalla.setText(palabras)
+            operacionesPantalla.setSelection(posicionPantalla + 1)
+        }
+        else{
+            palabras = palabrasPantalla.substring(0, posicionPantalla - 1) + palabrasPantalla.substring(posicionPantalla, palabrasPantalla.length)
+            operacionesPantalla.setText(palabras)
+            operacionesPantalla.setSelection(posicion - 1)
+        }
+    }
+
+    private fun borrarTodo(): Boolean{
+        operacionesPantalla.setText("")
+        resultadosPantalla.text = ""
+        operacionesPantalla.setSelection(0)
+        return true
     }
 }
