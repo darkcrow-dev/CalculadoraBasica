@@ -144,8 +144,11 @@ class MainActivity : AppCompatActivity() {
         if(string == "+"){
             if(palabras.isNotEmpty()){
                 if(posicion > 0){
-                    if(palabras[posicion-1].toString() != string){
-                        texto(string, posicion, palabras, true)
+                    if(palabras[posicion-1].toString() != string && palabras[posicion-1].isDigit()){
+                        texto(string, posicion, palabras, 2)
+                    }
+                    else if(palabras[posicion-1].toString() == "-" || palabras[posicion-1].toString() == "x" || palabras[posicion-1].toString() == "÷" || palabras[posicion-1].toString() == "^"){
+                        texto(string, posicion, palabras, 1)
                     }
                 }
             }
@@ -156,19 +159,25 @@ class MainActivity : AppCompatActivity() {
         }
         else if(string == "-"){
             if(posicion > 0){
-                if(palabras[posicion-1].toString() != string){
-                    texto(string, posicion, palabras, true)
+                if(palabras[posicion-1].toString() != string && palabras[posicion-1].isDigit()){
+                    texto(string, posicion, palabras, 2)
+                }
+                else if(palabras[posicion-1].toString() == "+" || palabras[posicion-1].toString() == "x" || palabras[posicion-1].toString() == "÷" || palabras[posicion-1].toString() == "^"){
+                    texto(string, posicion, palabras, 1)
                 }
             }
             else{
-                texto(string, posicion, palabras, true)
+                texto(string, posicion, palabras, 2)
             }
         }
         else if(string == "x"){
             if(palabras.isNotEmpty()){
                 if(posicion > 0){
-                    if(palabras[posicion-1].toString() != string){
-                        texto(string, posicion, palabras, true)
+                    if(palabras[posicion-1].toString() != string && palabras[posicion-1].isDigit()){
+                        texto(string, posicion, palabras, 2)
+                    }
+                    else if(palabras[posicion-1].toString() == "+" || palabras[posicion-1].toString() == "-" || palabras[posicion-1].toString() == "÷" || palabras[posicion-1].toString() == "^"){
+                        texto(string, posicion, palabras, 1)
                     }
                 }
             }
@@ -180,8 +189,11 @@ class MainActivity : AppCompatActivity() {
         else if(string == "÷"){
             if(palabras.isNotEmpty()){
                 if(posicion > 0){
-                    if(palabras[posicion-1].toString() != string){
-                        texto(string, posicion, palabras, true)
+                    if(palabras[posicion-1].toString() != string && palabras[posicion-1].isDigit()){
+                        texto(string, posicion, palabras, 2)
+                    }
+                    else if(palabras[posicion-1].toString() == "+" || palabras[posicion-1].toString() == "-" || palabras[posicion-1].toString() == "x" || palabras[posicion-1].toString() == "^"){
+                        texto(string, posicion, palabras, 1)
                     }
                 }
             }
@@ -193,8 +205,11 @@ class MainActivity : AppCompatActivity() {
         else if(string == "^"){
             if(palabras.isNotEmpty()){
                 if(posicion > 0){
-                    if(palabras[posicion-1].toString() != string){
-                        texto(string, posicion, palabras, true)
+                    if(palabras[posicion-1].toString() != string && palabras[posicion-1].isDigit()){
+                        texto(string, posicion, palabras, 2)
+                    }
+                    else if(palabras[posicion-1].toString() == "+" || palabras[posicion-1].toString() == "-" || palabras[posicion-1].toString() == "x" || palabras[posicion-1].toString() == "÷"){
+                        texto(string, posicion, palabras, 1)
                     }
                 }
             }
@@ -226,7 +241,7 @@ class MainActivity : AppCompatActivity() {
         else if(string == "borrar"){
             if(palabras.isNotEmpty()){
                 if(posicion > 0){
-                    texto(string, posicion, palabras, false)
+                    texto(string, posicion, palabras, 0)
                 }
             }
             else{
@@ -235,20 +250,27 @@ class MainActivity : AppCompatActivity() {
             }
         }
         else{
-            texto(string, posicion, palabras, true)
+            texto(string, posicion, palabras, 2)
         }
     }
 
-    private fun texto(simbolo: String, posicionPantalla: Int, palabrasPantalla: String, caso: Boolean){
-        if(caso){
-            palabras = palabrasPantalla.substring(0, posicionPantalla) + simbolo + palabrasPantalla.substring(posicionPantalla, palabrasPantalla.length)
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicionPantalla + 1)
-        }
-        else{
-            palabras = palabrasPantalla.substring(0, posicionPantalla - 1) + palabrasPantalla.substring(posicionPantalla, palabrasPantalla.length)
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion - 1)
+    private fun texto(simbolo: String, posicionPantalla: Int, palabrasPantalla: String, bandera: Int){
+        when (bandera) {
+            2 -> {
+                palabras = palabrasPantalla.substring(0, posicionPantalla) + simbolo + palabrasPantalla.substring(posicionPantalla, palabrasPantalla.length)
+                operacionesPantalla.setText(palabras)
+                operacionesPantalla.setSelection(posicionPantalla + 1)
+            }
+            1 -> {
+                palabras = palabrasPantalla.substring(0, posicionPantalla - 1) + simbolo + palabrasPantalla.substring(posicionPantalla, palabrasPantalla.length)
+                operacionesPantalla.setText(palabras)
+                operacionesPantalla.setSelection(posicionPantalla)
+            }
+            else -> {
+                palabras = palabrasPantalla.substring(0, posicionPantalla - 1) + palabrasPantalla.substring(posicionPantalla, palabrasPantalla.length)
+                operacionesPantalla.setText(palabras)
+                operacionesPantalla.setSelection(posicion - 1)
+            }
         }
     }
 
