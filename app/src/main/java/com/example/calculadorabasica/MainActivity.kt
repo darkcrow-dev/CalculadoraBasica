@@ -145,10 +145,18 @@ class MainActivity : AppCompatActivity() {
         palabras = operacionesPantalla.text.toString()
 
         if(string == "+"){
-            if(palabras[posicion-1].toString() != string){
-                palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
+            if(palabras.isNotEmpty()){
+                if(posicion > 0){
+                    if(palabras[posicion-1].toString() != "+"){
+                        palabras = palabras.substring(0, posicion) + "+" + palabras.substring(posicion, palabras.length)
+                        operacionesPantalla.setText(palabras)
+                        operacionesPantalla.setSelection(posicion + 1)
+                    }
+                }
+            }
+            else {
                 operacionesPantalla.setText(palabras)
-                operacionesPantalla.setSelection(posicion + 1)
+                operacionesPantalla.setSelection(posicion)
             }
         }
         else if(string == "-"){
@@ -159,24 +167,48 @@ class MainActivity : AppCompatActivity() {
             }
         }
         else if(string == "x"){
-            if(palabras[posicion-1].toString() != string){
-                palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
+            if(palabras.isNotEmpty()){
+                if(posicion > 0){
+                    if(palabras[posicion-1].toString() != "x"){
+                        palabras = palabras.substring(0, posicion) + "x" + palabras.substring(posicion, palabras.length)
+                        operacionesPantalla.setText(palabras)
+                        operacionesPantalla.setSelection(posicion + 1)
+                    }
+                }
+            }
+            else {
                 operacionesPantalla.setText(palabras)
-                operacionesPantalla.setSelection(posicion + 1)
+                operacionesPantalla.setSelection(posicion)
             }
         }
         else if(string == "÷"){
-            if(palabras[posicion-1].toString() != string){
-                palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
+            if(palabras.isNotEmpty()){
+                if(posicion > 0){
+                    if(palabras[posicion-1].toString() != "÷"){
+                        palabras = palabras.substring(0, posicion) + "÷" + palabras.substring(posicion, palabras.length)
+                        operacionesPantalla.setText(palabras)
+                        operacionesPantalla.setSelection(posicion + 1)
+                    }
+                }
+            }
+            else {
                 operacionesPantalla.setText(palabras)
-                operacionesPantalla.setSelection(posicion + 1)
+                operacionesPantalla.setSelection(posicion)
             }
         }
         else if(string == "^"){
-            if(palabras[posicion-1].toString() != string){
-                palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
+            if(palabras.isNotEmpty()){
+                if(posicion > 0){
+                    if(palabras[posicion-1].toString() != "^"){
+                        palabras = palabras.substring(0, posicion) + "^" + palabras.substring(posicion, palabras.length)
+                        operacionesPantalla.setText(palabras)
+                        operacionesPantalla.setSelection(posicion + 1)
+                    }
+                }
+            }
+            else {
                 operacionesPantalla.setText(palabras)
-                operacionesPantalla.setSelection(posicion + 1)
+                operacionesPantalla.setSelection(posicion)
             }
         }
         else if(string == "="){
