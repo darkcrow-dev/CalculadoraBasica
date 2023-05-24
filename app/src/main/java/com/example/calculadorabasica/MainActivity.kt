@@ -8,13 +8,21 @@ import android.widget.TextView
 import net.objecthunter.exp4j.ExpressionBuilder
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var operacionesPantalla: EditText
+    private lateinit var resultadosPantalla: TextView
+
+    private lateinit var palabras: String
+    private var posicion = 0
+    private var resultado = 0.0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         //Elementos de la vista
-        val operacionesPantalla = findViewById<EditText>(R.id.operaciones_pantalla)
-        val resultadosPantalla = findViewById<TextView>(R.id.resultados_pantalla)
+        operacionesPantalla = findViewById(R.id.operaciones_pantalla)
+        resultadosPantalla = findViewById(R.id.resultados_pantalla)
 
         val botonBorrar = findViewById<Button>(R.id.borrar)
         val botonParentesis1 = findViewById<Button>(R.id.parentesis1)
@@ -41,175 +49,137 @@ class MainActivity : AppCompatActivity() {
         val botonPotencia = findViewById<Button>(R.id.potencia)
         val botonIgual = findViewById<Button>(R.id.igual)
 
-        var palabras: String
-        var posicion: Int
-        var resultado: Double
-
         operacionesPantalla.showSoftInputOnFocus = false
         operacionesPantalla.requestFocus()
 
         botonUno.setOnClickListener {
-            posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString()
-            palabras = palabras.substring(0, posicion) + "1" + palabras.substring(posicion, palabras.length)
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion + 1)
+            boton("1")
         }
 
         botonDos.setOnClickListener {
-            posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString()
-            palabras = palabras.substring(0, posicion) + "2" + palabras.substring(posicion, palabras.length)
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion + 1)
+            boton("2")
         }
 
         botonTres.setOnClickListener {
-            posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString()
-            palabras = palabras.substring(0, posicion) + "3" + palabras.substring(posicion, palabras.length)
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion + 1)
+            boton("3")
         }
 
         botonCuatro.setOnClickListener {
-            posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString()
-            palabras = palabras.substring(0, posicion) + "4" + palabras.substring(posicion, palabras.length)
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion + 1)
+            boton("4")
         }
 
         botonCinco.setOnClickListener {
-            posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString()
-            palabras = palabras.substring(0, posicion) + "5" + palabras.substring(posicion, palabras.length)
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion + 1)
+            boton("5")
         }
 
         botonSeis.setOnClickListener {
-            posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString()
-            palabras = palabras.substring(0, posicion) + "6" + palabras.substring(posicion, palabras.length)
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion + 1)
+            boton("6")
         }
 
         botonSiete.setOnClickListener {
-            posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString()
-            palabras = palabras.substring(0, posicion) + "7" + palabras.substring(posicion, palabras.length)
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion + 1)
+            boton("7")
         }
 
         botonOcho.setOnClickListener {
-            posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString()
-            palabras = palabras.substring(0, posicion) + "8" + palabras.substring(posicion, palabras.length)
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion + 1)
+            boton("8")
         }
 
         botonNueve.setOnClickListener {
-            posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString()
-            palabras = palabras.substring(0, posicion) + "9" + palabras.substring(posicion, palabras.length)
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion + 1)
+            boton("9")
         }
 
         botonCero.setOnClickListener {
-            posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString()
-            palabras = palabras.substring(0, posicion) + "0" + palabras.substring(posicion, palabras.length)
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion + 1)
-        }
-
-        botonPunto.setOnClickListener {
-            posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString()
-            palabras = palabras.substring(0, posicion) + "." + palabras.substring(posicion, palabras.length)
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion + 1)
+            boton("0")
         }
 
         botonSumar.setOnClickListener {
-            posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString()
-
-            if(palabras[posicion-1].toString() != "+"){
-                palabras = palabras.substring(0, posicion) + "+" + palabras.substring(posicion, palabras.length)
-                operacionesPantalla.setText(palabras)
-                operacionesPantalla.setSelection(posicion + 1)
-            }
+            boton("+")
         }
 
         botonRestar.setOnClickListener {
-            posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString()
-
-            if(palabras[posicion-1].toString() != "-"){
-                palabras = palabras.substring(0, posicion) + "-" + palabras.substring(posicion, palabras.length)
-                operacionesPantalla.setText(palabras)
-                operacionesPantalla.setSelection(posicion + 1)
-            }
+            boton("-")
         }
 
         botonMultiplicar.setOnClickListener {
-            posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString()
-
-            if(palabras[posicion-1].toString() != "x"){
-                palabras = palabras.substring(0, posicion) + "x" + palabras.substring(posicion, palabras.length)
-                operacionesPantalla.setText(palabras)
-                operacionesPantalla.setSelection(posicion + 1)
-            }
+            boton("x")
         }
 
         botonDividir.setOnClickListener {
-            posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString()
-
-            if(palabras[posicion-1].toString() != "÷"){
-                palabras = palabras.substring(0, posicion) + "÷" + palabras.substring(posicion, palabras.length)
-                operacionesPantalla.setText(palabras)
-                operacionesPantalla.setSelection(posicion + 1)
-            }
+            boton("÷")
         }
 
         botonParentesis1.setOnClickListener {
-            posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString()
-            palabras = palabras.substring(0, posicion) + "(" + palabras.substring(posicion, palabras.length)
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion + 1)
+            boton("(")
         }
 
         botonParentesis2.setOnClickListener {
-            posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString()
-            palabras = palabras.substring(0, posicion) + ")" + palabras.substring(posicion, palabras.length)
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion + 1)
+            boton(")")
         }
 
         botonPotencia.setOnClickListener {
-            posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString()
+            boton("^")
+        }
 
-            if(palabras[posicion-1].toString() != "^"){
-                palabras = palabras.substring(0, posicion) + "^" + palabras.substring(posicion, palabras.length)
+        botonPunto.setOnClickListener {
+            boton(".")
+        }
+
+        botonIgual.setOnClickListener {
+            boton("=")
+        }
+
+        botonBorrar.setOnClickListener {
+            boton("⌫")
+        }
+
+        botonBorrar.setOnLongClickListener {
+            operacionesPantalla.setText("")
+            resultadosPantalla.text = ""
+            operacionesPantalla.setSelection(0)
+            true
+        }
+    }
+
+    private fun boton(string: String){
+        posicion = operacionesPantalla.selectionStart
+        palabras = operacionesPantalla.text.toString()
+
+        if(string == "+"){
+            if(palabras[posicion-1].toString() != string){
+                palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
                 operacionesPantalla.setText(palabras)
                 operacionesPantalla.setSelection(posicion + 1)
             }
         }
-
-        botonIgual.setOnClickListener {
-            posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString()
+        else if(string == "-"){
+            if(palabras[posicion-1].toString() != string){
+                palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
+                operacionesPantalla.setText(palabras)
+                operacionesPantalla.setSelection(posicion + 1)
+            }
+        }
+        else if(string == "x"){
+            if(palabras[posicion-1].toString() != string){
+                palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
+                operacionesPantalla.setText(palabras)
+                operacionesPantalla.setSelection(posicion + 1)
+            }
+        }
+        else if(string == "÷"){
+            if(palabras[posicion-1].toString() != string){
+                palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
+                operacionesPantalla.setText(palabras)
+                operacionesPantalla.setSelection(posicion + 1)
+            }
+        }
+        else if(string == "^"){
+            if(palabras[posicion-1].toString() != string){
+                palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
+                operacionesPantalla.setText(palabras)
+                operacionesPantalla.setSelection(posicion + 1)
+            }
+        }
+        else if(string == "="){
             palabras = palabras.replace("÷", "/")
             palabras = palabras.replace("x", "*")
 
@@ -222,18 +192,14 @@ class MainActivity : AppCompatActivity() {
             } catch (e: ArithmeticException) {
                 textoErrores = "No se puede dividir entre 0"
                 resultadosPantalla.text = textoErrores
-            } catch (e: java.lang.IllegalArgumentException) {
+            } catch (e: IllegalArgumentException) {
                 textoErrores = ""
                 resultadosPantalla.text = textoErrores
             }
 
             operacionesPantalla.setSelection(posicion)
         }
-
-        botonBorrar.setOnClickListener {
-            posicion = operacionesPantalla.selectionStart
-            palabras = operacionesPantalla.text.toString()
-
+        else if(string == "⌫"){
             if(palabras.isNotEmpty()){
                 if(posicion > 0){
                     palabras = palabras.substring(0, posicion -1) + palabras.substring(posicion, palabras.length)
@@ -246,12 +212,10 @@ class MainActivity : AppCompatActivity() {
                 operacionesPantalla.setSelection(posicion)
             }
         }
-
-        botonBorrar.setOnLongClickListener {
-            operacionesPantalla.setText("")
-            resultadosPantalla.text = ""
-            operacionesPantalla.setSelection(0)
-            true
+        else{
+            palabras = palabras.substring(0, posicion) + string + palabras.substring(posicion, palabras.length)
+            operacionesPantalla.setText(palabras)
+            operacionesPantalla.setSelection(posicion + 1)
         }
     }
 }
