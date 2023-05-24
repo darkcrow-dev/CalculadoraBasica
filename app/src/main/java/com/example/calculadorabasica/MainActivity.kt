@@ -139,33 +139,45 @@ class MainActivity : AppCompatActivity() {
         botonSumar.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
             palabras = operacionesPantalla.text.toString()
-            palabras = palabras.substring(0, posicion) + "+" + palabras.substring(posicion, palabras.length)
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion + 1)
+
+            if(palabras[posicion-1].toString() != "+"){
+                palabras = palabras.substring(0, posicion) + "+" + palabras.substring(posicion, palabras.length)
+                operacionesPantalla.setText(palabras)
+                operacionesPantalla.setSelection(posicion + 1)
+            }
         }
 
         botonRestar.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
             palabras = operacionesPantalla.text.toString()
-            palabras = palabras.substring(0, posicion) + "-" + palabras.substring(posicion, palabras.length)
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion + 1)
+
+            if(palabras[posicion-1].toString() != "-"){
+                palabras = palabras.substring(0, posicion) + "-" + palabras.substring(posicion, palabras.length)
+                operacionesPantalla.setText(palabras)
+                operacionesPantalla.setSelection(posicion + 1)
+            }
         }
 
         botonMultiplicar.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
             palabras = operacionesPantalla.text.toString()
-            palabras = palabras.substring(0, posicion) + "x" + palabras.substring(posicion, palabras.length)
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion + 1)
+
+            if(palabras[posicion-1].toString() != "x"){
+                palabras = palabras.substring(0, posicion) + "x" + palabras.substring(posicion, palabras.length)
+                operacionesPantalla.setText(palabras)
+                operacionesPantalla.setSelection(posicion + 1)
+            }
         }
 
         botonDividir.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
             palabras = operacionesPantalla.text.toString()
-            palabras = palabras.substring(0, posicion) + "÷" + palabras.substring(posicion, palabras.length)
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion + 1)
+
+            if(palabras[posicion-1].toString() != "÷"){
+                palabras = palabras.substring(0, posicion) + "÷" + palabras.substring(posicion, palabras.length)
+                operacionesPantalla.setText(palabras)
+                operacionesPantalla.setSelection(posicion + 1)
+            }
         }
 
         botonParentesis1.setOnClickListener {
@@ -187,9 +199,12 @@ class MainActivity : AppCompatActivity() {
         botonPotencia.setOnClickListener {
             posicion = operacionesPantalla.selectionStart
             palabras = operacionesPantalla.text.toString()
-            palabras = palabras.substring(0, posicion) + "^" + palabras.substring(posicion, palabras.length)
-            operacionesPantalla.setText(palabras)
-            operacionesPantalla.setSelection(posicion + 1)
+
+            if(palabras[posicion-1].toString() != "^"){
+                palabras = palabras.substring(0, posicion) + "^" + palabras.substring(posicion, palabras.length)
+                operacionesPantalla.setText(palabras)
+                operacionesPantalla.setSelection(posicion + 1)
+            }
         }
 
         botonIgual.setOnClickListener {
