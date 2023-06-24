@@ -141,116 +141,118 @@ class MainActivity : AppCompatActivity() {
         posicion = operacionesPantalla.selectionStart
         palabras = operacionesPantalla.text.toString()
 
-        if(string == "+"){
-            if(palabras.isNotEmpty()){
+        when (string) {
+            "+" -> {
+                if(palabras.isNotEmpty()){
+                    if(posicion > 0){
+                        if(palabras[posicion-1].toString() != string && (palabras[posicion-1].isDigit() || palabras[posicion-1].toString() == ")")){
+                            texto(string, posicion, palabras, 2)
+                        }
+                        else if(palabras[posicion-1].toString() == "-" || palabras[posicion-1].toString() == "x" || palabras[posicion-1].toString() == "÷" || palabras[posicion-1].toString() == "^"){
+                            texto(string, posicion, palabras, 1)
+                        }
+                    }
+                }
+                else {
+                    operacionesPantalla.setText(palabras)
+                    operacionesPantalla.setSelection(posicion)
+                }
+            }
+            "-" -> {
                 if(posicion > 0){
-                    if(palabras[posicion-1].toString() != string && palabras[posicion-1].isDigit()){
+                    if(palabras[posicion-1].toString() != string && (palabras[posicion-1].isDigit() || palabras[posicion-1].toString() == ")")){
                         texto(string, posicion, palabras, 2)
                     }
-                    else if(palabras[posicion-1].toString() == "-" || palabras[posicion-1].toString() == "x" || palabras[posicion-1].toString() == "÷" || palabras[posicion-1].toString() == "^"){
+                    else if(palabras[posicion-1].toString() == "+" || palabras[posicion-1].toString() == "x" || palabras[posicion-1].toString() == "÷" || palabras[posicion-1].toString() == "^"){
                         texto(string, posicion, palabras, 1)
                     }
                 }
-            }
-            else {
-                operacionesPantalla.setText(palabras)
-                operacionesPantalla.setSelection(posicion)
-            }
-        }
-        else if(string == "-"){
-            if(posicion > 0){
-                if(palabras[posicion-1].toString() != string && palabras[posicion-1].isDigit()){
+                else{
                     texto(string, posicion, palabras, 2)
                 }
-                else if(palabras[posicion-1].toString() == "+" || palabras[posicion-1].toString() == "x" || palabras[posicion-1].toString() == "÷" || palabras[posicion-1].toString() == "^"){
-                    texto(string, posicion, palabras, 1)
+            }
+            "x" -> {
+                if(palabras.isNotEmpty()){
+                    if(posicion > 0){
+                        if(palabras[posicion-1].toString() != string && (palabras[posicion-1].isDigit() || palabras[posicion-1].toString() == ")")){
+                            texto(string, posicion, palabras, 2)
+                        }
+                        else if(palabras[posicion-1].toString() == "+" || palabras[posicion-1].toString() == "-" || palabras[posicion-1].toString() == "÷" || palabras[posicion-1].toString() == "^"){
+                            texto(string, posicion, palabras, 1)
+                        }
+                    }
+                }
+                else {
+                    operacionesPantalla.setText(palabras)
+                    operacionesPantalla.setSelection(posicion)
                 }
             }
-            else{
+            "÷" -> {
+                if(palabras.isNotEmpty()){
+                    if(posicion > 0){
+                        if(palabras[posicion-1].toString() != string && (palabras[posicion-1].isDigit() || palabras[posicion-1].toString() == ")")){
+                            texto(string, posicion, palabras, 2)
+                        }
+                        else if(palabras[posicion-1].toString() == "+" || palabras[posicion-1].toString() == "-" || palabras[posicion-1].toString() == "x" || palabras[posicion-1].toString() == "^"){
+                            texto(string, posicion, palabras, 1)
+                        }
+                    }
+                }
+                else {
+                    operacionesPantalla.setText(palabras)
+                    operacionesPantalla.setSelection(posicion)
+                }
+            }
+            "^" -> {
+                if(palabras.isNotEmpty()){
+                    if(posicion > 0){
+                        if(palabras[posicion-1].toString() != string && (palabras[posicion-1].isDigit() || palabras[posicion-1].toString() == ")")){
+                            texto(string, posicion, palabras, 2)
+                        }
+                        else if(palabras[posicion-1].toString() == "+" || palabras[posicion-1].toString() == "-" || palabras[posicion-1].toString() == "x" || palabras[posicion-1].toString() == "÷"){
+                            texto(string, posicion, palabras, 1)
+                        }
+                    }
+                }
+                else {
+                    operacionesPantalla.setText(palabras)
+                    operacionesPantalla.setSelection(posicion)
+                }
+            }
+            "=" -> {
+                palabras = palabras.replace("÷", "/")
+                palabras = palabras.replace("x", "*")
+
+                val expression = ExpressionBuilder(palabras).build()
+                val textoErrores: String
+
+                try{
+                    resultado = expression.evaluate()
+                    resultadosPantalla.text = resultado.toString()
+                } catch (e: ArithmeticException) {
+                    textoErrores = "No se puede dividir entre 0"
+                    resultadosPantalla.text = textoErrores
+                } catch (e: IllegalArgumentException) {
+                    textoErrores = ""
+                    resultadosPantalla.text = textoErrores
+                }
+
+                operacionesPantalla.setSelection(posicion)
+            }
+            "borrar" -> {
+                if(palabras.isNotEmpty()){
+                    if(posicion > 0){
+                        texto(string, posicion, palabras, 0)
+                    }
+                }
+                else{
+                    operacionesPantalla.setText(palabras)
+                    operacionesPantalla.setSelection(posicion)
+                }
+            }
+            else -> {
                 texto(string, posicion, palabras, 2)
             }
-        }
-        else if(string == "x"){
-            if(palabras.isNotEmpty()){
-                if(posicion > 0){
-                    if(palabras[posicion-1].toString() != string && palabras[posicion-1].isDigit()){
-                        texto(string, posicion, palabras, 2)
-                    }
-                    else if(palabras[posicion-1].toString() == "+" || palabras[posicion-1].toString() == "-" || palabras[posicion-1].toString() == "÷" || palabras[posicion-1].toString() == "^"){
-                        texto(string, posicion, palabras, 1)
-                    }
-                }
-            }
-            else {
-                operacionesPantalla.setText(palabras)
-                operacionesPantalla.setSelection(posicion)
-            }
-        }
-        else if(string == "÷"){
-            if(palabras.isNotEmpty()){
-                if(posicion > 0){
-                    if(palabras[posicion-1].toString() != string && palabras[posicion-1].isDigit()){
-                        texto(string, posicion, palabras, 2)
-                    }
-                    else if(palabras[posicion-1].toString() == "+" || palabras[posicion-1].toString() == "-" || palabras[posicion-1].toString() == "x" || palabras[posicion-1].toString() == "^"){
-                        texto(string, posicion, palabras, 1)
-                    }
-                }
-            }
-            else {
-                operacionesPantalla.setText(palabras)
-                operacionesPantalla.setSelection(posicion)
-            }
-        }
-        else if(string == "^"){
-            if(palabras.isNotEmpty()){
-                if(posicion > 0){
-                    if(palabras[posicion-1].toString() != string && palabras[posicion-1].isDigit()){
-                        texto(string, posicion, palabras, 2)
-                    }
-                    else if(palabras[posicion-1].toString() == "+" || palabras[posicion-1].toString() == "-" || palabras[posicion-1].toString() == "x" || palabras[posicion-1].toString() == "÷"){
-                        texto(string, posicion, palabras, 1)
-                    }
-                }
-            }
-            else {
-                operacionesPantalla.setText(palabras)
-                operacionesPantalla.setSelection(posicion)
-            }
-        }
-        else if(string == "="){
-            palabras = palabras.replace("÷", "/")
-            palabras = palabras.replace("x", "*")
-
-            val expression = ExpressionBuilder(palabras).build()
-            val textoErrores: String
-
-            try{
-                resultado = expression.evaluate()
-                resultadosPantalla.text = resultado.toString()
-            } catch (e: ArithmeticException) {
-                textoErrores = "No se puede dividir entre 0"
-                resultadosPantalla.text = textoErrores
-            } catch (e: IllegalArgumentException) {
-                textoErrores = ""
-                resultadosPantalla.text = textoErrores
-            }
-
-            operacionesPantalla.setSelection(posicion)
-        }
-        else if(string == "borrar"){
-            if(palabras.isNotEmpty()){
-                if(posicion > 0){
-                    texto(string, posicion, palabras, 0)
-                }
-            }
-            else{
-                operacionesPantalla.setText(palabras)
-                operacionesPantalla.setSelection(posicion)
-            }
-        }
-        else{
-            texto(string, posicion, palabras, 2)
         }
     }
 
