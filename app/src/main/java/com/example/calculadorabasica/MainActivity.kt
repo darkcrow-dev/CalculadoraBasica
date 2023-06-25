@@ -5,16 +5,16 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import net.objecthunter.exp4j.ExpressionBuilder
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var operacionesPantalla: EditText
     private lateinit var resultadosPantalla: TextView
 
-    private lateinit var palabras: String
+    private lateinit var palabrasPantalla: String
     private var posicion = 0
-    private var resultado = 0.0
+    private var indicador = -1
+    private lateinit var array: Array<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,234 +52,233 @@ class MainActivity : AppCompatActivity() {
         operacionesPantalla.showSoftInputOnFocus = false
         operacionesPantalla.requestFocus()
 
+        val calculadora = Calculadora()
+
         botonUno.setOnClickListener {
-            boton("1")
+            posicion = operacionesPantalla.selectionStart
+            palabrasPantalla = operacionesPantalla.text.toString()
+
+            indicador = calculadora.boton("1", posicion, palabrasPantalla)
+            array = calculadora.acciones("1", posicion, palabrasPantalla, indicador)
+
+            operacionesPantalla.setText(array[0])
+            operacionesPantalla.setSelection(array[1].toInt())
         }
 
         botonDos.setOnClickListener {
-            boton("2")
+            posicion = operacionesPantalla.selectionStart
+            palabrasPantalla = operacionesPantalla.text.toString()
+
+            indicador = calculadora.boton("2", posicion, palabrasPantalla)
+            array = calculadora.acciones("2", posicion, palabrasPantalla, indicador)
+
+            operacionesPantalla.setText(array[0])
+            operacionesPantalla.setSelection(array[1].toInt())
         }
 
         botonTres.setOnClickListener {
-            boton("3")
+            posicion = operacionesPantalla.selectionStart
+            palabrasPantalla = operacionesPantalla.text.toString()
+
+            indicador = calculadora.boton("3", posicion, palabrasPantalla)
+            array = calculadora.acciones("3", posicion, palabrasPantalla, indicador)
+
+            operacionesPantalla.setText(array[0])
+            operacionesPantalla.setSelection(array[1].toInt())
         }
 
         botonCuatro.setOnClickListener {
-            boton("4")
+            posicion = operacionesPantalla.selectionStart
+            palabrasPantalla = operacionesPantalla.text.toString()
+
+            indicador = calculadora.boton("4", posicion, palabrasPantalla)
+            array = calculadora.acciones("4", posicion, palabrasPantalla, indicador)
+
+            operacionesPantalla.setText(array[0])
+            operacionesPantalla.setSelection(array[1].toInt())
         }
 
         botonCinco.setOnClickListener {
-            boton("5")
+            posicion = operacionesPantalla.selectionStart
+            palabrasPantalla = operacionesPantalla.text.toString()
+
+            indicador = calculadora.boton("5", posicion, palabrasPantalla)
+            array = calculadora.acciones("5", posicion, palabrasPantalla, indicador)
+
+            operacionesPantalla.setText(array[0])
+            operacionesPantalla.setSelection(array[1].toInt())
         }
 
         botonSeis.setOnClickListener {
-            boton("6")
+            posicion = operacionesPantalla.selectionStart
+            palabrasPantalla = operacionesPantalla.text.toString()
+
+            indicador = calculadora.boton("6", posicion, palabrasPantalla)
+            array = calculadora.acciones("6", posicion, palabrasPantalla, indicador)
+
+            operacionesPantalla.setText(array[0])
+            operacionesPantalla.setSelection(array[1].toInt())
         }
 
         botonSiete.setOnClickListener {
-            boton("7")
+            posicion = operacionesPantalla.selectionStart
+            palabrasPantalla = operacionesPantalla.text.toString()
+
+            indicador = calculadora.boton("7", posicion, palabrasPantalla)
+            array = calculadora.acciones("7", posicion, palabrasPantalla, indicador)
+
+            operacionesPantalla.setText(array[0])
+            operacionesPantalla.setSelection(array[1].toInt())
         }
 
         botonOcho.setOnClickListener {
-            boton("8")
+            posicion = operacionesPantalla.selectionStart
+            palabrasPantalla = operacionesPantalla.text.toString()
+
+            indicador = calculadora.boton("8", posicion, palabrasPantalla)
+            array = calculadora.acciones("8", posicion, palabrasPantalla, indicador)
+
+            operacionesPantalla.setText(array[0])
+            operacionesPantalla.setSelection(array[1].toInt())
         }
 
         botonNueve.setOnClickListener {
-            boton("9")
+            posicion = operacionesPantalla.selectionStart
+            palabrasPantalla = operacionesPantalla.text.toString()
+
+            indicador = calculadora.boton("9", posicion, palabrasPantalla)
+            array = calculadora.acciones("9", posicion, palabrasPantalla, indicador)
+
+            operacionesPantalla.setText(array[0])
+            operacionesPantalla.setSelection(array[1].toInt())
         }
 
         botonCero.setOnClickListener {
-            boton("0")
+            posicion = operacionesPantalla.selectionStart
+            palabrasPantalla = operacionesPantalla.text.toString()
+
+            indicador = calculadora.boton("0", posicion, palabrasPantalla)
+            array = calculadora.acciones("0", posicion, palabrasPantalla, indicador)
+
+            operacionesPantalla.setText(array[0])
+            operacionesPantalla.setSelection(array[1].toInt())
         }
 
         botonSumar.setOnClickListener {
-            boton("+")
+            posicion = operacionesPantalla.selectionStart
+            palabrasPantalla = operacionesPantalla.text.toString()
+
+            indicador = calculadora.boton("+", posicion, palabrasPantalla)
+            array = calculadora.acciones("+", posicion, palabrasPantalla, indicador)
+
+            operacionesPantalla.setText(array[0])
+            operacionesPantalla.setSelection(array[1].toInt())
         }
 
         botonRestar.setOnClickListener {
-            boton("-")
+            posicion = operacionesPantalla.selectionStart
+            palabrasPantalla = operacionesPantalla.text.toString()
+
+            indicador = calculadora.boton("-", posicion, palabrasPantalla)
+            array = calculadora.acciones("-", posicion, palabrasPantalla, indicador)
+
+            operacionesPantalla.setText(array[0])
+            operacionesPantalla.setSelection(array[1].toInt())
         }
 
         botonMultiplicar.setOnClickListener {
-            boton("x")
+            posicion = operacionesPantalla.selectionStart
+            palabrasPantalla = operacionesPantalla.text.toString()
+
+            indicador = calculadora.boton("x", posicion, palabrasPantalla)
+            array = calculadora.acciones("x", posicion, palabrasPantalla, indicador)
+
+            operacionesPantalla.setText(array[0])
+            operacionesPantalla.setSelection(array[1].toInt())
         }
 
         botonDividir.setOnClickListener {
-            boton("÷")
+            posicion = operacionesPantalla.selectionStart
+            palabrasPantalla = operacionesPantalla.text.toString()
+
+            indicador = calculadora.boton("÷", posicion, palabrasPantalla)
+            array = calculadora.acciones("÷", posicion, palabrasPantalla, indicador)
+
+            operacionesPantalla.setText(array[0])
+            operacionesPantalla.setSelection(array[1].toInt())
         }
 
         botonParentesis1.setOnClickListener {
-            boton("(")
+            posicion = operacionesPantalla.selectionStart
+            palabrasPantalla = operacionesPantalla.text.toString()
+
+            indicador = calculadora.boton("(", posicion, palabrasPantalla)
+            array = calculadora.acciones("(", posicion, palabrasPantalla, indicador)
+
+            operacionesPantalla.setText(array[0])
+            operacionesPantalla.setSelection(array[1].toInt())
         }
 
         botonParentesis2.setOnClickListener {
-            boton(")")
+            posicion = operacionesPantalla.selectionStart
+            palabrasPantalla = operacionesPantalla.text.toString()
+
+            indicador = calculadora.boton(")", posicion, palabrasPantalla)
+            array = calculadora.acciones(")", posicion, palabrasPantalla, indicador)
+
+            operacionesPantalla.setText(array[0])
+            operacionesPantalla.setSelection(array[1].toInt())
         }
 
         botonPotencia.setOnClickListener {
-            boton("^")
+            posicion = operacionesPantalla.selectionStart
+            palabrasPantalla = operacionesPantalla.text.toString()
+
+            indicador = calculadora.boton("^", posicion, palabrasPantalla)
+            array = calculadora.acciones("^", posicion, palabrasPantalla, indicador)
+
+            operacionesPantalla.setText(array[0])
+            operacionesPantalla.setSelection(array[1].toInt())
         }
 
         botonPunto.setOnClickListener {
-            boton(".")
+            posicion = operacionesPantalla.selectionStart
+            palabrasPantalla = operacionesPantalla.text.toString()
+
+            indicador = calculadora.boton(".", posicion, palabrasPantalla)
+            array = calculadora.acciones(".", posicion, palabrasPantalla, indicador)
+
+            operacionesPantalla.setText(array[0])
+            operacionesPantalla.setSelection(array[1].toInt())
         }
 
         botonIgual.setOnClickListener {
-            boton("=")
+            posicion = operacionesPantalla.selectionStart
+            palabrasPantalla = operacionesPantalla.text.toString()
+
+            indicador = calculadora.boton("=", posicion, palabrasPantalla)
+            array = calculadora.acciones("=", posicion, palabrasPantalla, indicador)
+
+            operacionesPantalla.setSelection(array[1].toInt())
+            resultadosPantalla.text = array[2]
         }
 
         botonBorrar.setOnClickListener {
-            boton("borrar")
+            posicion = operacionesPantalla.selectionStart
+            palabrasPantalla = operacionesPantalla.text.toString()
+
+            indicador = calculadora.boton("borrar", posicion, palabrasPantalla)
+            array = calculadora.acciones("borrar", posicion, palabrasPantalla, indicador)
+
+            operacionesPantalla.setText(array[0])
+            operacionesPantalla.setSelection(array[1].toInt())
         }
 
         botonBorrar.setOnLongClickListener {
-            borrarTodo()
+            operacionesPantalla.setText("")
+            operacionesPantalla.setSelection(0)
+            resultadosPantalla.text = ""
+            return@setOnLongClickListener true
         }
-    }
-
-    private fun boton(string: String){
-        posicion = operacionesPantalla.selectionStart
-        palabras = operacionesPantalla.text.toString()
-
-        when (string) {
-            "+" -> {
-                if(palabras.isNotEmpty()){
-                    if(posicion > 0){
-                        if(palabras[posicion-1].toString() != string && (palabras[posicion-1].isDigit() || palabras[posicion-1].toString() == ")")){
-                            texto(string, posicion, palabras, 2)
-                        }
-                        else if(palabras[posicion-1].toString() == "-" || palabras[posicion-1].toString() == "x" || palabras[posicion-1].toString() == "÷" || palabras[posicion-1].toString() == "^"){
-                            texto(string, posicion, palabras, 1)
-                        }
-                    }
-                }
-                else {
-                    operacionesPantalla.setText(palabras)
-                    operacionesPantalla.setSelection(posicion)
-                }
-            }
-            "-" -> {
-                if(posicion > 0){
-                    if(palabras[posicion-1].toString() != string && (palabras[posicion-1].isDigit() || palabras[posicion-1].toString() == ")")){
-                        texto(string, posicion, palabras, 2)
-                    }
-                    else if(palabras[posicion-1].toString() == "+" || palabras[posicion-1].toString() == "x" || palabras[posicion-1].toString() == "÷" || palabras[posicion-1].toString() == "^"){
-                        texto(string, posicion, palabras, 1)
-                    }
-                }
-                else{
-                    texto(string, posicion, palabras, 2)
-                }
-            }
-            "x" -> {
-                if(palabras.isNotEmpty()){
-                    if(posicion > 0){
-                        if(palabras[posicion-1].toString() != string && (palabras[posicion-1].isDigit() || palabras[posicion-1].toString() == ")")){
-                            texto(string, posicion, palabras, 2)
-                        }
-                        else if(palabras[posicion-1].toString() == "+" || palabras[posicion-1].toString() == "-" || palabras[posicion-1].toString() == "÷" || palabras[posicion-1].toString() == "^"){
-                            texto(string, posicion, palabras, 1)
-                        }
-                    }
-                }
-                else {
-                    operacionesPantalla.setText(palabras)
-                    operacionesPantalla.setSelection(posicion)
-                }
-            }
-            "÷" -> {
-                if(palabras.isNotEmpty()){
-                    if(posicion > 0){
-                        if(palabras[posicion-1].toString() != string && (palabras[posicion-1].isDigit() || palabras[posicion-1].toString() == ")")){
-                            texto(string, posicion, palabras, 2)
-                        }
-                        else if(palabras[posicion-1].toString() == "+" || palabras[posicion-1].toString() == "-" || palabras[posicion-1].toString() == "x" || palabras[posicion-1].toString() == "^"){
-                            texto(string, posicion, palabras, 1)
-                        }
-                    }
-                }
-                else {
-                    operacionesPantalla.setText(palabras)
-                    operacionesPantalla.setSelection(posicion)
-                }
-            }
-            "^" -> {
-                if(palabras.isNotEmpty()){
-                    if(posicion > 0){
-                        if(palabras[posicion-1].toString() != string && (palabras[posicion-1].isDigit() || palabras[posicion-1].toString() == ")")){
-                            texto(string, posicion, palabras, 2)
-                        }
-                        else if(palabras[posicion-1].toString() == "+" || palabras[posicion-1].toString() == "-" || palabras[posicion-1].toString() == "x" || palabras[posicion-1].toString() == "÷"){
-                            texto(string, posicion, palabras, 1)
-                        }
-                    }
-                }
-                else {
-                    operacionesPantalla.setText(palabras)
-                    operacionesPantalla.setSelection(posicion)
-                }
-            }
-            "=" -> {
-                palabras = palabras.replace("÷", "/")
-                palabras = palabras.replace("x", "*")
-
-                val expression = ExpressionBuilder(palabras).build()
-                val textoErrores: String
-
-                try{
-                    resultado = expression.evaluate()
-                    resultadosPantalla.text = resultado.toString()
-                } catch (e: ArithmeticException) {
-                    textoErrores = "No se puede dividir entre 0"
-                    resultadosPantalla.text = textoErrores
-                } catch (e: IllegalArgumentException) {
-                    textoErrores = ""
-                    resultadosPantalla.text = textoErrores
-                }
-
-                operacionesPantalla.setSelection(posicion)
-            }
-            "borrar" -> {
-                if(palabras.isNotEmpty()){
-                    if(posicion > 0){
-                        texto(string, posicion, palabras, 0)
-                    }
-                }
-                else{
-                    operacionesPantalla.setText(palabras)
-                    operacionesPantalla.setSelection(posicion)
-                }
-            }
-            else -> {
-                texto(string, posicion, palabras, 2)
-            }
-        }
-    }
-
-    private fun texto(simbolo: String, posicionPantalla: Int, palabrasPantalla: String, bandera: Int){
-        when (bandera) {
-            2 -> {
-                palabras = palabrasPantalla.substring(0, posicionPantalla) + simbolo + palabrasPantalla.substring(posicionPantalla, palabrasPantalla.length)
-                operacionesPantalla.setText(palabras)
-                operacionesPantalla.setSelection(posicionPantalla + 1)
-            }
-            1 -> {
-                palabras = palabrasPantalla.substring(0, posicionPantalla - 1) + simbolo + palabrasPantalla.substring(posicionPantalla, palabrasPantalla.length)
-                operacionesPantalla.setText(palabras)
-                operacionesPantalla.setSelection(posicionPantalla)
-            }
-            else -> {
-                palabras = palabrasPantalla.substring(0, posicionPantalla - 1) + palabrasPantalla.substring(posicionPantalla, palabrasPantalla.length)
-                operacionesPantalla.setText(palabras)
-                operacionesPantalla.setSelection(posicion - 1)
-            }
-        }
-    }
-
-    private fun borrarTodo(): Boolean{
-        operacionesPantalla.setText("")
-        resultadosPantalla.text = ""
-        operacionesPantalla.setSelection(0)
-        return true
     }
 }
