@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent">
     </EditText>
 
-    <!-- Resultados -->
+    <!-- Resultados de la pantalla -->
     <TextView
         android:id="@+id/resultados_pantalla"
         android:layout_width="0dp"
